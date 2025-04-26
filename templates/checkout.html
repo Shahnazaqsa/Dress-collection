@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checkout - Abaya Shop</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='CSS/style.css') }}"
+    />
+  </head>
+  <body class="bg-offwhite">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <div class="container">
+        <a class="navbar-brand text-offwhite" href="{{ url_for('home') }}"
+          >Abaya Shop</a
+        >
+      </div>
+    </nav>
+    <div class="container my-4">
+      {% if success %}
+      <div class="alert alert-success" role="alert">
+        Thank you for your purchase! Your order has been received.
+      </div>
+      <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+      {% else %}
+      <h1 class="text-primary mb-4">Checkout</h1>
+      <form method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Shipping Address</label>
+          <textarea
+            class="form-control"
+            id="address"
+            name="address"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Place Order</button>
+      </form>
+      {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
